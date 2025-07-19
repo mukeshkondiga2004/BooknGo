@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>my trip</title>
+      <link rel="stylesheet" href="mokesh1.css">
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+      function validate(){
+        var username1=document.getElementById("username").value;
+        var mail1=document.getElementById("mail").value;
+        var pass1=document.getElementById("pass").value;
+        var repass1=document.getElementById("repass").value;
+        var a=/[a-z A-Z 0-9]+/; //username
+        var b=/^([a-z 0-9\.-]+)@gmail\.com$/;//mail
+        var c= /^(?=.[a-z])(?=.[A-Z])(?=.*[!@#$%^&()_+{}|:"<>?~`]).{10,}$/;//password*/
+        if(username1==""||mail1==""||pass1==""||repass1==""){
+        alert("NO DATA PROVIDED");
+        return false;
+        }
+        else{
+          if(a.test(username1)&& username1.length<15){
+              if(b.test(mail1)){
+                if(!c.test(pass1)){
+                 if(pass1==repass1){
+                    
+                    return true;
+                 } 
+                 else{
+                  document.getElementById("error4").style.visibility="visible";
+                  return false;
+                 }
+                }
+                else{
+                document.getElementById("error3").style.visibility="visible";
+                return false;
+                }
+              }
+              else{
+              document.getElementById("error2").style.visibility="visible";
+              return false;
+              }
+            }
+          else{
+              document.getElementById("error1").style.visibility="visible";
+             // username1.style.border="solid 3px red";
+              return false;
+              }
+            
+        }
+       
+        
+      
+      }
+    </script>       
+ </head>
+  <body>
+    <form action="mokeshlogin.html" >
+      <header class="head" >
+        <nav class="navbar">
+          <a href="#" class="pad">about</a>
+          <a href="#" class="pad">Help</a>
+          <a href="#" class="pad">contact us</a>
+        </nav>
+      </header>
+       <div class="sign-up">
+          <h1 class="mo">Sign Up</h1>
+          <div class="sign">
+              <input type="text" placeholder="username" id="username">
+              <i class='bx bxs-user'></i>
+              <label id="error1" style="color:red;visibility:hidden;" >!</label>
+          </div>
+          <div class="sign">
+              <input type="text" placeholder="gmail" id="mail">
+              <i class='bx bxs-envelope'></i>
+              <label id="error2" style="color:red;visibility:hidden">!</label>
+          </div>
+          <div class="sign">
+              <input type="password" placeholder="password" id="pass">
+              <i class='bx bxs-lock-alt'></i> 
+              <label id="error3" style="color:red;visibility:hidden">!</label>
+          </div>
+          <div class="sign">
+              <input type="password" placeholder="re-password" id="repass">
+              <i class='bx bxs-keyboard'></i>
+              <label id="error4"  style="color:red;visibility:hidden">!</label>
+          </div>
+          
+              <button type="submit"class="btn" onclick="return validate()" >Sign Up</button>
+          </div>
+        </div>
+    </form>
+  </body>
+</html>
